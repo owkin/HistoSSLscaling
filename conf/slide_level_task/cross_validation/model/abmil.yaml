@@ -1,0 +1,7 @@
+_target_: rl_benchmarks.models.ABMIL
+d_model_attention: 128
+temperature: 1.0
+mlp_hidden: [128, 64]
+mlp_activation:
+  _target_: torch.nn.ReLU
+bias: True

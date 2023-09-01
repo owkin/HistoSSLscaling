@@ -1,0 +1,3 @@
+_target_: rl_benchmarks.models.iBOTViT
+architecture: vit_base_pancan
+encoder: teacher

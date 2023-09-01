@@ -1,0 +1,7 @@
+defaults:
+  - _self_
+  - task: tcga_crc_msi_prediction
+  - model: mean_pool
+
+features_root_dir: null
+logs_root_dir: null

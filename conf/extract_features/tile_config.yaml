@@ -1,0 +1,21 @@
+defaults:
+  - _self_
+  - tile_dataset: nct_crc  # nct_crc, camelyon17_wilds
+  - feature_extractor: ResNet50
+
+features_output_dir: null
+
+# Tiling parameters
+tile_size: auto
+seed: 0
+batch_size: 64
+num_workers: 8
+
+# A note on the device(s) used for inference:
+# device: Union[None, int, List[int]] = None
+#     GPUs to use.
+#     If None, will use all available GPUs.
+#     If -1, extraction will run on CPU
+#     If K, extraction will run on GPU K
+
+device: -1

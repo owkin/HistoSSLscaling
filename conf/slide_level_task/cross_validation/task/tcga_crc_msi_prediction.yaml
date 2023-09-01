@@ -1,0 +1,49 @@
+data:
+  n_tiles: 1000
+  feature_extractor: iBOTViTBasePANCAN
+  train:
+    _target_: rl_benchmarks.datasets.SlideClassificationDataset
+    cohort: TCGA_CRC
+    label: MSI
+
+validation_scheme:
+  _target_: rl_benchmarks.val_schemes.NestedCrossValidation
+  n_repeats_outer: 1
+  n_splits_outer: 5
+  n_repeats_inner: 1
+  n_splits_inner: 5
+  stratified: True
+  split_mode: patient_split
+  grid_search_params:
+    learning_rate: [1.0e-3, 1.0e-4]
+    weight_decay: [0., 1.0e-4]
+  trainer_cfg:
+    _target_: rl_benchmarks.trainers.TorchTrainer
+    batch_size: 16
+    num_epochs: 50
+    learning_rate: 2.0e-4
+    weight_decay: 0.
+    device: cuda:0
+    optimizer:
+      _target_: torch.optim.Adam
+      _partial_: True
+    train_step:
+      _target_: rl_benchmarks.utils.slide_level_train_step
+      _partial_: True
+    val_step:
+      _target_: rl_benchmarks.utils.slide_level_val_step
+      _partial_: True
+    collator:
+      _target_: rl_benchmarks.utils.pad_collate_fn
+      _partial_: True
+    model:
+      _target_: rl_benchmarks.models.MeanPool
+    criterion:
+      _target_: rl_benchmarks.losses.BCEWithLogitsLoss
+    metrics:
+      auc:
+        _target_: rl_benchmarks.metrics.compute_binary_auc
+        _partial_: True
+      accuracy:
+        _target_: rl_benchmarks.metrics.compute_binary_accuracy
+        _partial_: True

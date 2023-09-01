@@ -1,0 +1,14 @@
+_target_: rl_benchmarks.models.DSMIL
+
+d_tiles_values: 32
+d_tiles_queries: 32
+passing_values: False
+tiles_scores_mlp_hidden:
+ - 200
+ - 100
+tiles_queries_mlp_hidden:
+ - 200
+ - 100
+mlp_hidden:
+ - 200
+ - 100

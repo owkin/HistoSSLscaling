@@ -1,0 +1,14 @@
+feature_extractor: ResNet50
+tile_dataset: camelyon17_wilds #nct_crc  
+
+features_root_dir: null
+logs_root_dir: null
+
+portions: [0.001, 0.005] #, 0.01]  # , 0.05, 0.1, 0.5, 1.0]
+
+tile_size: auto
+num_workers: 8
+n_resamples: 1000
+seed: 0
+confidence_level: 0.95
+n_ensembling: 30
