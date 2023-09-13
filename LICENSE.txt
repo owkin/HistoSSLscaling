@@ -1,11 +1,4 @@
-Confidential – Restricted Diffusion
-
-
-
-
 License Terms and Conditions
-
-
 
 
 By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this License Terms and Conditions ("License") from Owkin Inc, 831 Broadway, Unit 3R, New York, NY 10003 (the “Licensor”). You are granted with the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.
