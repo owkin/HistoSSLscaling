@@ -579,7 +579,6 @@ If so, this message is normal as our weights also contain the final MLP head,
 which are is needed for features extraction.
 
 # Todo
-- [ ] Add missing tests.
 - [ ] Add CI configuration in `.github/workflows/`.
 - [ ] Add Sphinx documentation.
 
