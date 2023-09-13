@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """TransMIL aggregation algorithm."""
 
 from math import ceil, sqrt, modf
@@ -94,14 +100,14 @@ class _Block(Module):
     References
     ----------
     .. [1] https://pytorch.org/docs/stable/generated/
-    torch.nn.TransformerEncoderLayer.html
+    torch.nn.TransformerEncoderLayer.html (Modified BSD Clause)
 
-    .. [2] https://github.com/rwightman/pytorch-image-models
+    .. [2] https://github.com/rwightman/pytorch-image-models (Apache 2.0)
 
-    .. [3] https://github.com/lucidrains/nystrom-attention
+    .. [3] https://github.com/mlpen/Nystromformer/tree/main (MIT License)
 
     .. [4] Xiong et al. (2021). Nyströmformer: A Nyström-based Algorithm
-    for Approximating Self-Attention.
+    for Approximating Self-Attention.)
     """
 
     def __init__(

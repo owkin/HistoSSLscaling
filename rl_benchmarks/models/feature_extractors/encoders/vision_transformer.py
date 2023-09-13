@@ -1,6 +1,12 @@
-"""Vision Transformers main function. This code is mainly inspired from ``DINO`` and ``timm`` library.
-- ``DINO`` library: https://github.com/facebookresearch/dino
-- ``timm`` library: https://github.com/rwightman/pytorch-image-models/blob/master/timm/
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+"""Vision Transformers main function. This code is derived from ``DINO`` and ``timm`` library.
+- ``DINO`` library: https://github.com/facebookresearch/dino (Apache License 2.0)
+- ``timm`` library: https://github.com/rwightman/pytorch-image-models/blob/master/timm/ (Apache License 2.0)
 """
 
 from typing import Callable, Dict, List, Optional, Tuple

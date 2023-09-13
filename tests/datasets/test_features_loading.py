@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Tests for features loading."""
 
 import pickle as pkl
@@ -88,11 +94,7 @@ class TestLoadTCGAFeatures(unittest.TestCase):
                     tile_size=224,
                     load_slide=False,
                 )
-                self.assertEqual(
-                    get_labels_distribution(df), distribution
-                )
-
-
+                self.assertEqual(get_labels_distribution(df), distribution)
                 self.assertEqual(df.patient_id.nunique(), n_patients)
                 self.assertEqual(df.slide_id.nunique(), n_slides)
                 self.assertEqual(df.features_path.isna().sum(), 0)

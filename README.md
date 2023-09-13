@@ -579,7 +579,6 @@ If so, this message is normal as our weights also contain the final MLP head,
 which are is needed for features extraction.
 
 # Todo
-- [ ] Add `LICENSE` file.
 - [ ] Add missing tests.
 - [ ] Add CI configuration in `.github/workflows/`.
 - [ ] Add Sphinx documentation.
@@ -593,9 +592,41 @@ Please open new issues directly on the repository, we'll do our best to address 
 
 # Acknowledgements
 
-Vision Transformers architectures were inspired from [facebookresearch/dino](https://github.com/facebookresearch/dino), [huggingface/pytorch-image-models](https://github.com/huggingface/pytorch-image-models/tree/main) and [lmlpen/Nystromformer](https://github.com/mlpen/Nystromformer/tree/main) repositories.
+Vision Transformers architectures were derived from [facebookresearch/dino](https://github.com/facebookresearch/dino) (Apache License 2.0), [huggingface/pytorch-image-models](https://github.com/huggingface/pytorch-image-models/tree/main) (Apache License 2.0) and [lmlpen/Nystromformer](https://github.com/mlpen/Nystromformer/tree/main) (MIT License) repositories.
 
-`hipt_mil` multiple-instance learning algorithm was directly inspired from the [HIPT repository](https://github.com/mahmoodlab/HIPT/blob/master/2-Weakly-Supervised-Subtyping/models/model_hierarchical_mil.py).
+`hipt_mil` multiple-instance learning algorithm was directly inspired from the [HIPT repository](https://github.com/mahmoodlab/HIPT/blob/master/2-Weakly-Supervised-Subtyping/models/model_hierarchical_mil.py) (Apache License 2.0 with Commons Clause).
+
+**The following table describe the different libraries used in this work.**
+
+| Name of the code library | Version | License                                 | Licensor                                  | Github repository                                                                                                             |
+| ------------------------ | ------- | --------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| HIPT                     |   \-   | Apache License 2.0 with Commons Clause | Mahmood Lab                               | [https://github.com/mahmoodlab/HIPT/](https://github.com/mahmoodlab/HIPT/blob/master/LICENSE)                                 |
+| dino                     | \-      | Apache License 2.0                      | Not specified                             | [https://github.com/facebookresearch/dino/](https://github.com/facebookresearch/dino/blob/main/LICENSE)                       |
+| pytorch-image-models   | 0.9.0   | Apache License 2.0                      | Ross Wightman                             | [https://github.com/huggingface/pytorch-image-models/](https://github.com/huggingface/pytorch-image-models/blob/main/LICENSE) |
+| nystrom-attention        | 0.0.11  | MIT License                             | Phil Wang                                 | [https://github.com/lucidrains/nystrom-attention/](https://github.com/lucidrains/nystrom-attention/blob/main/LICENSE)         |
+| einops                   | 0.6.1   | MIT License                             | Alex Rogozhnikov                          | [https://github.com/arogozhnikov/einops/](https://github.com/arogozhnikov/einops/blob/master/LICENSE)                         |
+| hydra-core               | 1.3.2   | MIT License                             | Facebook, Inc. and its affiliates         | [https://github.com/facebookresearch/hydra/](https://github.com/facebookresearch/hydra/blob/main/LICENSE)                     |
+| imageio                  | 2.31.1  | BSD-2 Clause                            | Imageio developers                        | [https://github.com/imageio/imageio/](https://github.com/imageio/imageio/blob/master/LICENSE)                                 |
+| lifelines                | 0.27.7  | MIT License                             | Cameron Davidson-Pilon                    | [https://github.com/CamDavidsonPilon/lifelines/](https://github.com/CamDavidsonPilon/lifelines/blob/master/LICENSE)           |
+| loguru                   | 0.7.0   | MIT License                             | Not specified                             | [https://github.com/Delgan/loguru/](https://github.com/Delgan/loguru/blob/master/LICENSE)                                     |
+| openslide-python       | 1.3.0   | GNU LGPL v2.1                           | Free Software Foundation                  | [https://github.com/openslide/openslide-python/](https://github.com/openslide/openslide-python/blob/main/COPYING.LESSER)      |
+| PyYAML                   | 6.0.1   | MIT License                             | Ingy döt Net and Kirill Simonov           | [https://github.com/yaml/pyyaml/](https://github.com/yaml/pyyaml/blob/master/LICENSE)                                         |
+| scikit-learn             | 1.3.0   | BSD-3 Clause                            | Scikit-learn developers                   | [https://github.com/scikit-learn/scikit-learn/](https://github.com/scikit-learn/scikit-learn/blob/main/COPYING)               |
+| torch                    | 1.13.1  | Modified BSD Clause                     | See LICENSE                               | [https://github.com/pytorch/pytorch/](https://github.com/pytorch/pytorch/blob/main/LICENSE)                                   |
+| torchvision              | 0.14.1  | BSD-3 Clause                            | Soumith Chintala                          | [https://github.com/pytorch/vision](https://github.com/pytorch/vision)                                                        |
+| tqdm                     | 4.66.1  | MIT and Mozilla Public License          | See LICENSE                               | [https://github.com/tqdm/tqdm/](https://github.com/tqdm/tqdm/blob/master/LICENCE)                                             |
+| dill                     | 0.37.1  | BSD-3 Clause                            | The Uncertainty Quantification Foundation | [https://github.com/uqfoundation/dill/](https://github.com/uqfoundation/dill/blob/master/LICENSE)                             |
+
+**The following table describe the different datasets from which either features or labels were extracted.**
+
+| Name of the dataset | License           | Dataset home page                                                                                  |
+| ------------------- | ----------------- | -------------------------------------------------------------------------------------------------- |
+| NCT-CRC-HE-100K     | CC-BY 4.0 License | [https://zenodo.org/record/1214456](https://zenodo.org/record/1214456)                             |
+| Camelyon16          | CC0 1.0 License   | [https://camelyon17.grand-challenge.org/Data/](https://camelyon17.grand-challenge.org/Data/)       |
+| Camelyon17-WILDS    | CC0 1.0 License   | [https://wilds.stanford.edu/datasets/#camelyon17](https://wilds.stanford.edu/datasets/#camelyon17) |
+
+The results published here are also partly based upon data generated by the TCGA Research Network: https://www.cancer.gov/tcga.
+
 
 # Citation
 

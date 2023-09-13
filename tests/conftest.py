@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Fixtures for tests."""
 
 from typing import Callable, Dict, List, Optional
@@ -29,10 +35,16 @@ def non_regression_tracking() -> Callable:
         digits: Optional[int] = None
             Maximum number of digits where metrics quality should be strict.
         """
-        def _round_dict_values(obj: Dict[str, Dict[str, List[float]]]) -> Dict[str, Dict[str, List[float]]]:
+
+        def _round_dict_values(
+            obj: Dict[str, Dict[str, List[float]]]
+        ) -> Dict[str, Dict[str, List[float]]]:
             """Round metrics values to ``digits`` number of digits."""
             return {
-                m: {rs: [round(metric, digits) for metric in metrics] for (rs, metrics) in v.items()}
+                m: {
+                    rs: [round(metric, digits) for metric in metrics]
+                    for (rs, metrics) in v.items()
+                }
                 for (m, v) in obj.items()
             }
 

@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Utility functions for attention mechanisms."""
 
 from math import ceil
@@ -51,7 +57,8 @@ def _moore_penrose_iter_pinv(x: torch.Tensor, iters: int = 6):
 class NystromAttention(Module):
     """Nyström approximation for the Multi-Head Self-Attention.
 
-    Implementation adapted from https://github.com/mlpen/Nystromformer/tree/main.
+    This code is derived from the nystrom-attention library:
+    ``nystrom-attention``: https://github.com/mlpen/Nystromformer/tree/main (MIT License)
 
     Parameters
     ----------

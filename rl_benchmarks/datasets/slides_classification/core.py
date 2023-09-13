@@ -1,7 +1,11 @@
-"""
-SlideFeaturesDataset module. This module is at the core of data loading for
-downstream experiments. It allows to sample over features and labels.
-"""
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+"""SlideFeaturesDataset module. This module is at the core of data loading for
+downstream experiments. It allows to sample over features and labels."""
 
 import warnings
 from pathlib import Path

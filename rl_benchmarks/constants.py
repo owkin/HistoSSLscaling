@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Paths to all raw and preprocessed data (weights included).
 Those paths are directly computed from the ``'conf.yaml'`` file at the root
 of this repository. Once the installation and data download steps are completed,

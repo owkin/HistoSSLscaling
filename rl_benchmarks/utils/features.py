@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Utility functions related to features extraction. Those functions are
 essential to run features extraction process, as done in
 ``"rl_benchmarks/tools/extract_features/"`` scripts."""

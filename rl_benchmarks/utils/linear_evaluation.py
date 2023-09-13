@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Utility functions for linear evaluation performed in
 ``rl_benchmarks/tools/tile_level_tasks/linear_evaluation.py``."""
 

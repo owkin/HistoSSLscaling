@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Weight initialization strategies
 Adapted from https://github.com/rwightman/pytorch-image-models."""
 

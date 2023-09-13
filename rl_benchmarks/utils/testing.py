@@ -1,7 +1,14 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Utility functions for testing."""
 
 from typing import Dict
 import pandas as pd
+
 
 def get_labels_distribution(dataset: pd.DataFrame) -> Dict[int, float]:
     """Get labels distribution. If survival task: get censoring and no. events.

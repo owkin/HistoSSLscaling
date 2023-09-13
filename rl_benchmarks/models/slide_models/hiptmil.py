@@ -1,3 +1,9 @@
+# Copyright (c) Owkin, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 """Transformer-based aggregation algorithm as introduced in HIPT method
 (https://arxiv.org/abs/2206.02647). Code is inspired from the original
 implementation
