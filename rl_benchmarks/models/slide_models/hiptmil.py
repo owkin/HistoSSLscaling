@@ -5,9 +5,8 @@
 # LICENSE file in the root directory of this source tree.
 
 """Transformer-based aggregation algorithm as introduced in HIPT method
-(https://arxiv.org/abs/2206.02647). Code is inspired from the original
-implementation
-(https://github.com/mahmoodlab/HIPT/blob/master/2-Weakly-Supervised-Subtyping/models/model_hierarchical_mil.py)."""
+(https://arxiv.org/abs/2206.02647). Code is derived from the original
+implementation (https://github.com/mahmoodlab/HIPT/blob/master/2-Weakly-Supervised-Subtyping/models/model_hierarchical_mil.py) from the HIPT repository (Apache 2.0 License with Commons Clause, Mahmood Lab)."""
 
 from typing import Dict, Optional, Tuple
 

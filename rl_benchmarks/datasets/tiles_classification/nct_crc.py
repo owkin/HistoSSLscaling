@@ -39,7 +39,7 @@ def load_nct_crc(
 
     References
     ----------
-    .. [1] https://zenodo.org/record/1214456#.YVrmANpBwRk
+    .. [1] https://zenodo.org/record/1214456#.YVrmANpBwRk (CC-BY 4.0 License).
     """
     # Select train, validation or testing tiles
     if cohort in ["TRAIN", "VALID"]:

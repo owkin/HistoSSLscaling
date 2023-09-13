@@ -38,7 +38,7 @@ def load_camelyon17_wilds(
 
     References
     ----------
-    .. [1] https://wilds.stanford.edu/datasets/.
+    .. [1] https://wilds.stanford.edu/datasets/ (CC0 1.0 License).
     """
 
     # Select train, val or test tiles

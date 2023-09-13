@@ -23,7 +23,7 @@ def load_histo(
     cohort: str = "TCGA_COAD",
     load_slide: bool = False,
 ) -> pd.DataFrame:
-    """Load TCGA histology data as a pandas dataframe.
+    """Load TCGA histology data as a pandas dataframe from TCGA portal [1]_.
 
     Parameters
     ----------
@@ -60,6 +60,10 @@ def load_histo(
         "slide_path": path to the slide
         "coords_path": path to the coordinates
         "label": outcome to predict
+
+    References
+    ----------
+    .. [1] TCGA Research Network: https://www.cancer.gov/tcga.
     """
     # Get paths
     slides_root_dir = Path(TCGA_PATHS["SLIDES"]) / cohort
