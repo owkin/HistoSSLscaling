@@ -71,7 +71,7 @@ Computational pathology is revolutionizing the field of pathology by integrating
 
 ## Download
 
-You can download the data necessary to use the present code and reproduce our results [here](/todo/add/paths). We advise you to download the whole folder, which may take time depending on your wifi bandwidth (folder takes **1.2 To**). You can use [rclone](https://rclone.org/) to download the folder from a remote machine (preferred in a `tmux` session).
+You can download the data necessary to use the present code and reproduce our results [here](https://drive.google.com/drive/folders/16XtgLTFUxB_sZ9rRlYINinIbJeiTdFz9?usp=sharing). We advise you to download the whole folder, which may take time depending on your wifi bandwidth (folder takes **1.2 To**). You can use [rclone](https://rclone.org/) to download the folder from a remote machine (preferred in a `tmux` session).
 
 ## Description
 
@@ -642,6 +642,6 @@ If you found our work useful in your research, please consider citing it at:
 	publisher    = {Cold Spring Harbor Laboratory Press},
 	url          = {https://www.medrxiv.org/content/early/2023/07/26/2023.07.21.23292757},
 	eprint       = {https://www.medrxiv.org/content/early/2023/07/26/2023.07.21.23292757.full.pdf},
-	journal = {medRxiv}
+	journal      = {medRxiv}
 }
 ```
