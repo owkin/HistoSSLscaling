@@ -159,7 +159,7 @@ The `preprocessed` folder contains two subfolders for slide-level and tile-level
 - Slide-level: for each feature extractor and dataset, we provide coordinates and features. Coordinates are provided as (N_tiles_slide, 3) numpy arrays where the 3 first columns rows correspond to `(tile_level, x_coordinate, y_coordinate)`. Features are provided as (N_tiles_slide, 3+d) numpy arrays, the d last columns being the model's features (3 first are the previous coordinates). **Coordinates are meant to extract the same tiles as done in our publication but are not needed for downstream experiments (only features are needed)**. Note that coordinates are divided into `coords_224`, `coords_256` and `coords_4096`, corresponding to 224 x 224 tiles (iBOT, CTransPath and ResNet models), 256 x 256 (Dino models) and 4096 x 4096 (HIPT) tiles, respectively. 
 
 > [!NOTE]
-> We provide all tiles for each slide with no cut-off. All tiles were extracted at 0.5 micrometers / pixel (20x magnification) except for CTransPath (mpp = 1.0 following the authors recommendation).
+> We provide all matter tiles for each slide. All tiles were extracted at 0.5 micrometers / pixel (20x magnification) except for CTransPath (mpp = 1.0 following the authors recommendation).
 
 > [!WARNING]
 > The `tile_level` is computed with `openslide.deepzoom.DeepZoomGenerator` through the following schematic syntax:
@@ -456,14 +456,14 @@ python ./tools/extract_features/extract_tile_features.py \
 
 ### Other feature extractors
 
-If you wish to extract features (both at the slide and tile-level) for `CTransPath` [1], `HIPT` [2], `DinoChenBRCA` [3] and `DinoChenPancancer` [2], please directly use the corresponding repositories. Those models correspond to `CTransPath`, `HIPT`, `Dino[ViT-S]BRCA` and `HIPT$^*$[ViT$_{256}$]`:
+If you wish to extract features (both at the slide and tile-level) for `CTransPath` [1], `HIPT` [2], `DinoChenBRCA` [3] and `DinoChenPancancer` [2], please directly use the corresponding repositories. Those models correspond to `CTransPath`, `HIPT`, `Dino[ViT-S]BRCA` and `HIPT[ViT_256]`:
 
 - `CTransPath` ([1], named `CTransPath` in our repository): [extraction script](https://github.com/Xiyue-Wang/TransPath/blob/main/get_features_CTransPath.py). Wang, Xiyue, et al. "Transformer-based unsupervised contrastive learning for histopathological image classification." Medical image analysis 81 (2022): 102559.
 - `HIPT` ([2], named `HIPT` in our repository): [extraction script](https://github.com/mahmoodlab/HIPT#how-hipt-works). Richard J. Chen, Chengkuan Chen, Yicong Li, Tiffany Y. Chen, Andrew D. Trister, Rahul G. Krishnan, and Faisal Mahmood. "Scaling vision transformers to gigapixel images via hierarchical self-supervised learning". In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 16144–16155, June 2022.
 - `Dino[ViT-S]BRCA` ([3], named `DinoChenBRCA` in our repository): [extraction cript](https://github.com/Richarizardd/Self-Supervised-ViT-Path/blob/master/patch_extraction.py). Richard J Chen and Rahul G Krishnan. "Self-supervised vision transformers learn visual concepts in histopathology". Learning Meaningful Representations of Life, NeurIPS 2021, 2021.
-- `HIPT$^*$[ViT$_{256}$]` ([23] Dino[ViT-S]PanCancer in our repository): [weights](https://github.com/mahmoodlab/HIPT/blob/master/HIPT_4K/Checkpoints/vit256_small_dino.pth). 
+- `HIPT[ViT_256]` ([23] Dino[ViT-S]PanCancer in our repository): [weights](https://github.com/mahmoodlab/HIPT/blob/master/HIPT_4K/Checkpoints/vit256_small_dino.pth). 
 
-After preprocessing of WSIs, we suggest using the above SSL models on tiles with same coordinates as provided in `coords_256` (`Dino[ViT-S]BRCA`, `HIPT$^*$[ViT$_{256}$]`), `coords_4096` (HIPT) and `coords_224` (CTransPath). Generated features should follow, for each dataset, the same structure as described in the previous sections (1 features matrix for slides with (deepzoom_level, x, y) coordinates as first 3 columns, 1 features matrix for tiles-datasets).
+After preprocessing of WSIs, we suggest using the above SSL models on tiles with same coordinates as provided in `coords_256` (`Dino[ViT-S]BRCA`, `HIPT[ViT_256]`), `coords_4096` (HIPT) and `coords_224` (CTransPath). Generated features should follow, for each dataset, the same structure as described in the previous sections (1 features matrix for slides with (deepzoom_level, x, y) coordinates as first 3 columns, 1 features matrix for tiles-datasets).
 
 ## Running experiments
 
