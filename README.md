@@ -46,8 +46,8 @@ ibot_base_pancancer = iBOTViT(architecture="vit_base_pancan", encoder="student",
 
 # load an image and transform it into a normalized tensor
 image = Image.open("assets/example.tif")  # (224, 224, 3), uint8
-tensor = ibot_base_pancancer.transform(image) # (3, 224, 224), tf.float32
-batch = tensor.unsqueeze(0)  # (1, 3, 224, 224), tf.float32
+tensor = ibot_base_pancancer.transform(image) # (3, 224, 224), torch.float32
+batch = tensor.unsqueeze(0)  # (1, 3, 224, 224), torch.float32
 
 # compute the 768-d features
 features = ibot_base_pancancer(batch).detach().cpu().numpy()
