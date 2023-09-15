@@ -23,8 +23,8 @@
 	year         = {2023},
 	doi          = {10.1101/2023.07.21.23292757},
 	publisher    = {Cold Spring Harbor Laboratory Press},
-	url          = {https://www.medrxiv.org/content/early/2023/07/26/2023.07.21.23292757},
-	eprint       = {https://www.medrxiv.org/content/early/2023/07/26/2023.07.21.23292757.full.pdf},
+	url          = {https://www.medrxiv.org/content/early/2023/07/26/2023.07.21.23292757v2},
+	eprint       = {https://www.medrxiv.org/content/early/2023/07/26/2023.07.21.23292757v2.full.pdf},
 	journal = {medRxiv}
 }
 ```
