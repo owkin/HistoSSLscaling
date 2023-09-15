@@ -9,7 +9,7 @@
 <summary>
   <b>Scaling Self-Supervised Learning for Histopathology with Masked Image Modeling</b>, MedRxiv, July 2023.   
   
-  [[`MedRxiv`]](https://www.medrxiv.org/content/10.1101/2023.07.21.23292757v2) [[`Project page`]](https://www.owkin.com/publications/scaling-self-supervised-learning-for-histopathology-with-masked-image-modeling)  [[`Paper`]](https://www.medrxiv.org/content/10.1101/2023.07.21.23292757v1.full.pdf)
+  [[`MedRxiv`]](https://www.medrxiv.org/content/10.1101/2023.07.21.23292757v2) [[`Project page`]](https://www.owkin.com/publications/scaling-self-supervised-learning-for-histopathology-with-masked-image-modeling)  [[`Paper`]](https://www.medrxiv.org/content/10.1101/2023.07.21.23292757v2.full.pdf)
 
 </summary>
 
