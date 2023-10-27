@@ -30,17 +30,48 @@
 ```
 </details>
 
+### Update :tada: Phikon release on Hugging Face :tada:
+We released our Phikon model on [Hugging Face](https://huggingface.co/owkin/phikon).
+We also provide a Colab notebook to perform weakly-supervised learning on Camelyon16 and fine-tuning with LoRA on NCT-CRC-HE using Phikon.
+
+Here is a code snippet to perform feature extraction using Phikon.
+```python
+from PIL import Image
+from transformers import AutoImageProcessor, ViTModel
+
+# load an image
+image = Image.open("assets/example.tif")
+
+# load phikon
+image_processor = AutoImageProcessor.from_pretrained("owkin/phikon")
+model = ViTModel.from_pretrained("owkin/phikon")
+
+# process the image
+inputs = image_processor(image, return_tensors="pt")
+
+# get the features
+with torch.no_grad():
+    outputs = model(**inputs)
+    features = outputs.last_hidden_state[0, -1, :]
+
+# get features dimension and visualize the image
+assert features.shape == (1, 768)
+```
 ___
 
 
 **Official PyTorch Implementation** and pre-trained models for `Scaling Self-Supervised Learning for Histopathology with Masked Image Modeling`. This minimalist repository aims to:
-- **Publicly release the weights of our Vision Transformer Base (ViT-B) model pre-trained with iBOT on 40M pan-cancer histology tiles from TCGA.** Our `iBOT[ViT-B]Pancancer` model achieves state-of-the-art performance on a large variety of downstream tasks compared to other SSL frameworks available in the literature.
+- **Publicly release the weights of our Vision Transformer Base (ViT-B) model **Phikon** pre-trained with iBOT on 40M pan-cancer histology tiles from TCGA.** **Phikon** achieves state-of-the-art performance on a large variety of downstream tasks compared to other SSL frameworks available in the literature.
 
+<details>
+<summary> Feature extraction snippet using our package
+</summary>
+	
 ```python
 from PIL import Image
 from rl_benchmarks.models import iBOTViT
 
-# instantiate iBOT ViT-B Pancancer model
+# instantiate iBOT ViT-B Pancancer model, aka Phikon
 weights_path = "/<your_root_dir>/weights/ibot_vit_base_pancan.pth">
 ibot_base_pancancer = iBOTViT(architecture="vit_base_pancan", encoder="student", weights_path=weights_path)
 
@@ -53,6 +84,9 @@ batch = tensor.unsqueeze(0)  # (1, 3, 224, 224), torch.float32
 features = ibot_base_pancancer(batch).detach().cpu().numpy()
 assert features.shape == (1, 768)
 ```
+
+</details>
+
 
 - **Publicly release the histology features of our ViT-based iBOT models** (`iBOT[ViT-S]COAD`, `iBOT[ViT-B]COAD`, `iBOT[ViT-B]PanCancer`, `iBOT[ViT-L]COAD`) for i) 11 TCGA cohorts and Camelyon16 slides datasets; and ii) NCT-CRC and Camelyon17-Wilds patches datasets.
 - Reproduce the results from our publication, including: features extraction and clinical data processing, cross-validation experiments, results generation.
