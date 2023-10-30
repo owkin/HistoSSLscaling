@@ -44,7 +44,7 @@ image = Image.open("assets/example.tif")
 
 # load phikon
 image_processor = AutoImageProcessor.from_pretrained("owkin/phikon")
-model = ViTModel.from_pretrained("owkin/phikon")
+model = ViTModel.from_pretrained("owkin/phikon", add_pooling_layer=False)
 
 # process the image
 inputs = image_processor(image, return_tensors="pt")
@@ -52,10 +52,10 @@ inputs = image_processor(image, return_tensors="pt")
 # get the features
 with torch.no_grad():
     outputs = model(**inputs)
-    features = outputs.last_hidden_state[0, -1, :]
+    features = outputs.last_hidden_state[0, 0, :]  # CLS token
 
-# get features dimension and visualize the image
-assert features.shape == (1, 768)
+# get features dimension
+assert features.shape[1] == 768
 ```
 ___
 
