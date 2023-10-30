@@ -52,10 +52,7 @@ inputs = image_processor(image, return_tensors="pt")
 # get the features
 with torch.no_grad():
     outputs = model(**inputs)
-    features = outputs.last_hidden_state[0, 0, :]  # CLS token
-
-# get features dimension
-assert features.shape[1] == 768
+    features = outputs.last_hidden_state[:, 0, :]  # (1, 768) shape
 ```
 ___
 
