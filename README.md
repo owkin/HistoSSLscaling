@@ -37,6 +37,7 @@ We also provide a Colab notebook to perform weakly-supervised learning on Camely
 Here is a code snippet to perform feature extraction using Phikon.
 ```python
 from PIL import Image
+import torch
 from transformers import AutoImageProcessor, ViTModel
 
 # load an image
