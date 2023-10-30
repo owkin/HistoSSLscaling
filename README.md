@@ -71,7 +71,7 @@ from rl_benchmarks.models import iBOTViT
 
 # instantiate iBOT ViT-B Pancancer model, aka Phikon
 weights_path = "/<your_root_dir>/weights/ibot_vit_base_pancan.pth">
-ibot_base_pancancer = iBOTViT(architecture="vit_base_pancan", encoder="student", weights_path=weights_path)
+ibot_base_pancancer = iBOTViT(architecture="vit_base_pancan", encoder="teacher", weights_path=weights_path)
 
 # load an image and transform it into a normalized tensor
 image = Image.open("assets/example.tif")  # (224, 224, 3), uint8
