@@ -31,8 +31,8 @@
 </details>
 
 ### Update :tada: Phikon release on Hugging Face :tada:
-We released our Phikon model on [Hugging Face](https://huggingface.co/owkin/phikon).
-We also provide a Colab notebook to perform weakly-supervised learning on Camelyon16 and fine-tuning with LoRA on NCT-CRC-HE using Phikon.
+We released our Phikon model on [Hugging Face](https://huggingface.co/owkin/phikon). Check out our community [blog post](https://huggingface.co/blog/EazyAl/phikon) !
+We also provide a [Colab notebook](https://colab.research.google.com/drive/1dxhM5hENbWyXM9Xb2wM8guBkeoT64s3X?usp=sharing#scrollTo=jt1P3T07UuQV) to perform weakly-supervised learning on Camelyon16 and fine-tuning with LoRA on NCT-CRC-HE using Phikon.
 
 Here is a code snippet to perform feature extraction using Phikon.
 ```python
