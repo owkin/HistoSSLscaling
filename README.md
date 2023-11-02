@@ -103,11 +103,16 @@ Computational pathology is revolutionizing the field of pathology by integrating
 
 ## Download
 
-You can download the data necessary to use the present code and reproduce our results [here](https://drive.google.com/drive/folders/16XtgLTFUxB_sZ9rRlYINinIbJeiTdFz9?usp=sharing). We advise you to download the whole folder, which may take time depending on your wifi bandwidth (folder takes **1.2 To**). You can use [rclone](https://rclone.org/) to download the folder from a remote machine (preferred in a `tmux` session).
+You can download the data necessary to use the present code and reproduce our results here:
+- raw data: [Google Drive](https://drive.google.com/drive/folders/1_fsnJqyNS00WWWP38NTAWk1n9sD2iCEq?usp=drive_link)
+- preprocessed data: [Google Drive](https://drive.google.com/drive/folders/1pZkayJjhvgRZUU6Q3ADIjbXJ2IemXvlR?usp=drive_link)
+- weights: [Google Drive](https://drive.google.com/drive/folders/1wIrLw4KZa8oI3hZVykH1dyvXu08_WwmL?usp=drive_link)
+
+Please create `weights`, `raw` and `preprocessed` folders containing the content of the different downloads. This step may take time depending on your wifi bandwidth (folder takes **1.2 To**). You can use [rclone](https://rclone.org/) to download the folder from a remote machine (preferred in a `tmux` session).
 
 ## Description
 
-The bucket consist in three main folders: a `weights`, `raw` and `preprocessed` folders. The `weights` folder contains weights for `iBOT[ViT-B]PanCancer` (our best ViT-B iBOT model). Other models from the literature can be retrieved from the corresponding Github repositories:
+The bucket contains three main folders: a `weights`, `raw` and `preprocessed` folders. The `weights` folder contains weights for `iBOT[ViT-B]PanCancer` (our best ViT-B iBOT model). Other models from the literature can be retrieved from the corresponding Github repositories:
 - CTransPath: https://github.com/Xiyue-Wang/TransPath
 - HIPT: https://github.com/mahmoodlab/HIPT
 - Dino[ViT-S]BRCA: https://github.com/Richarizardd/Self-Supervised-ViT-Path
