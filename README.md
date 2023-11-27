@@ -39,6 +39,7 @@ from PIL import Image
 from rl_benchmarks.models import iBOTViT
 
 # instantiate iBOT ViT-B Pancancer model, aka Phikon
+# /!\ please use the "teacher" encoder which produces better results !
 weights_path = "/<your_root_dir>/weights/ibot_vit_base_pancan.pth">
 ibot_base_pancancer = iBOTViT(architecture="vit_base_pancan", encoder="teacher", weights_path=weights_path)
 
