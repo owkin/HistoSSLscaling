@@ -25,7 +25,7 @@ class iBOTViT(Extractor):  # pylint: disable=abstract-method
     ----------
     architecture: str = 'vit_base_pancan'
         Model architecture. Must only be "vit_base_pancan" as of now.
-    encoder: str = 'student'
+    encoder: str = 'teacher'
         Whether to load the weights from the student or teacher encoder.
     mean: Tuple[float, float, float] = IMAGENET_MEAN
         Mean values used for mean/std normalization of image channels.
@@ -42,7 +42,7 @@ class iBOTViT(Extractor):  # pylint: disable=abstract-method
     def __init__(
         self,
         architecture="vit_base_pancan",
-        encoder="student",
+        encoder="teacher",
         mean: Tuple[float, float, float] = IMAGENET_MEAN,
         std: Tuple[float, float, float] = IMAGENET_STD,
         weights_path: Optional[str] = None,
