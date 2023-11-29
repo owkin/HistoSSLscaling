@@ -30,11 +30,41 @@
 ```
 </details>
 
+### Update :tada: Phikon release on Hugging Face :tada:
+We released our Phikon model on [Hugging Face](https://huggingface.co/owkin/phikon). Check out our community [blog post](https://huggingface.co/blog/EazyAl/phikon) !
+We also provide a [Colab notebook](https://colab.research.google.com/drive/1zjxscEBgpizHBCwMy-aNz2916AVdB642) to perform weakly-supervised learning on Camelyon16 and fine-tuning with LoRA on NCT-CRC-HE using Phikon.
+
+Here is a code snippet to perform feature extraction using Phikon.
+```python
+from PIL import Image
+import torch
+from transformers import AutoImageProcessor, ViTModel
+
+# load an image
+image = Image.open("assets/example.tif")
+
+# load phikon
+image_processor = AutoImageProcessor.from_pretrained("owkin/phikon")
+model = ViTModel.from_pretrained("owkin/phikon", add_pooling_layer=False)
+
+# process the image
+inputs = image_processor(image, return_tensors="pt")
+
+# get the features
+with torch.no_grad():
+    outputs = model(**inputs)
+    features = outputs.last_hidden_state[:, 0, :]  # (1, 768) shape
+```
+___
+
+
+
 **Official PyTorch Implementation** and pre-trained models for `Scaling Self-Supervised Learning for Histopathology with Masked Image Modeling`. This minimalist repository aims to:
 - **Publicly release the weights of our Vision Transformer Base (ViT-B) model **Phikon** pre-trained with iBOT on 40M pan-cancer histology tiles from TCGA.** **Phikon** achieves state-of-the-art performance on a large variety of downstream tasks compared to other SSL frameworks available in the literature.
 
 	
 ```python
+# feature extraction snippet with `rl_benchmarks` repository
 from PIL import Image
 from rl_benchmarks.models import iBOTViT
 
