@@ -62,7 +62,10 @@ ___
 **Official PyTorch Implementation** and pre-trained models for `Scaling Self-Supervised Learning for Histopathology with Masked Image Modeling`. This minimalist repository aims to:
 - **Publicly release the weights of our Vision Transformer Base (ViT-B) model **Phikon** pre-trained with iBOT on 40M pan-cancer histology tiles from TCGA.** **Phikon** achieves state-of-the-art performance on a large variety of downstream tasks compared to other SSL frameworks available in the literature.
 
-	
+⚠️ **Addendum** :warning:
+
+**From 09.01.2023 to 10.30.2023, this repository stated using the `student`, please use the `teacher` backbone instead**.
+
 ```python
 # feature extraction snippet with `rl_benchmarks` repository
 from PIL import Image
