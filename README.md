@@ -317,29 +317,6 @@ sudo apt install libpixman-1-0
 All the accessible versions are stored in [this website](https://pkgs.org/download/libpixman-1-0).
 You can eventually run `apt-get check` to check for broken dependencies.
 
-
-### Installing `rl_benchmarks` package
-
-Create a dedicated conda environment:
-
-```bash
-conda create -n rl_benchmarks python=3.8
-conda activate rl_benchmarks
-````
-
-Install `rl_benchmarks` package and its dependencies using the `install.sh` file.
-
-```bash
-cd /workspace
-git clone https://github.com/owkin/rl_benchmarks_release.git
-cd ./rl_benchmarks_release
-bash install.sh
-```
-
-Once the installation and data download steps are completed, you finally need to edit the `conf.yaml` file so that to specify:
-- `logs_save_dir`: directory for cross-validation experiments logs
-- `data_dir`: root directory that contains the downloaded data. If you downloaded the data in `/home/user/downloaded_data/` folder, then this should be the `data_dir`.
-
 ### Run tests (10 minutes)
 
 Once data has been downloaded and the previous installation steps done, you can
