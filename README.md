@@ -318,22 +318,22 @@ All the accessible versions are stored in [this website](https://pkgs.org/downlo
 You can eventually run `apt-get check` to check for broken dependencies.
 
 
-### Installing `rl_benchmarks` package
+### Installing `rl_benchmarks` package within this repo
 
-Create a dedicated conda environment:
+Create a dedicated conda environment (optional):
 
 ```bash
 conda create -n rl_benchmarks python=3.8
 conda activate rl_benchmarks
-````
+```
 
 Install `rl_benchmarks` package and its dependencies using the `install.sh` file.
 
 ```bash
-cd /workspace
-git clone https://github.com/owkin/rl_benchmarks_release.git
-cd ./rl_benchmarks_release
-bash install.sh
+git clone https://github.com/owkin/HistoSSLscaling.git
+cd ./HistoSSLscaling
+# Install the RL_benchmarks repository (in editable mode) together with other requirements
+python -m pip install -e .  -r requirements.txt 
 ```
 
 Once the installation and data download steps are completed, you finally need to edit the `conf.yaml` file so that to specify:
