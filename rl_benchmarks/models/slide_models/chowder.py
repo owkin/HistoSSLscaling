@@ -54,6 +54,10 @@ class Chowder(nn.Module):
         Activation that is used after each layer of the MLP.
     bias: bool = True
         Whether to add bias for layers of the tiles MLP.
+    metadata_cols: int = 3
+        Number of metadata columns (for example, magnification, patch start 
+        coordinates etc.) at the start of input data. Default of 3 assumes
+        magnification, patch start x and patch start y.
 
     References
     ----------
@@ -74,6 +78,7 @@ class Chowder(nn.Module):
         mlp_dropout: Optional[List[float]] = None,
         mlp_activation: Optional[torch.nn.Module] = torch.nn.Sigmoid(),
         bias: bool = True,
+        metadata_cols: int = 3,
     ) -> None:
         super(Chowder, self).__init__()
 
@@ -138,6 +143,8 @@ class Chowder(nn.Module):
         )
         self.mlp.apply(self.weight_initialization)
 
+        self.metadata_cols = metadata_cols
+
     @staticmethod
     def weight_initialization(module: torch.nn.Module) -> None:
         """Initialize weights for the module using Xavier initialization method,
@@ -165,7 +172,7 @@ class Chowder(nn.Module):
         logits, extreme_scores: Tuple[torch.Tensor, torch.Tensor]:
             (B, OUT_FEATURES), (B, N_TOP + N_BOTTOM, OUT_FEATURES)
         """
-        scores = self.score_model(x=features[..., 3:], mask=mask)
+        scores = self.score_model(x=features[..., self.metadata_cols:], mask=mask)
         extreme_scores = self.extreme_layer(
             x=scores, mask=mask
         )  # (B, N_TOP + N_BOTTOM, OUT_FEATURES)
