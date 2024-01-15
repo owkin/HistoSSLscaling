@@ -73,6 +73,7 @@ class MLP(torch.nn.Sequential):
 
         super(MLP, self).__init__(*layers)
 
+
 class MeanPool(torch.nn.Module):
     """MeanPool model.
     A simple model that takes the average of tile features of a slide as input
@@ -97,7 +98,7 @@ class MeanPool(torch.nn.Module):
     bias: bool = True
         Whether to add bias for layers of the MLP.
     metadata_cols: int = 3
-        Number of metadata columns (for example, magnification, patch start 
+        Number of metadata columns (for example, magnification, patch start
         coordinates etc.) at the start of input data. Default of 3 assumes
         magnification, patch start x and patch start y.
     """
@@ -121,7 +122,7 @@ class MeanPool(torch.nn.Module):
             activation=activation,
             bias=bias,
         )
-        
+
         self.metadata_cols = metadata_cols
 
     def _mean(self, x: torch.Tensor, mask: Optional[torch.BoolTensor] = None):
@@ -150,6 +151,6 @@ class MeanPool(torch.nn.Module):
         logits: torch.Tensor
             (B, OUT_FEATURES)
         """
-        features = x[..., self.metadata_cols:]
+        features = x[..., self.metadata_cols :]
         mean_feats = self._mean(features, mask)
         return self.mlp(mean_feats)

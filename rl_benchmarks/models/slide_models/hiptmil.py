@@ -76,7 +76,7 @@ class TransformerModule(nn.Module):
     out_features: int = 1
         Prediction (model output) dimension.
     metadata_cols: int = 3
-        Number of metadata columns (for example, magnification, patch start 
+        Number of metadata columns (for example, magnification, patch start
         coordinates etc.) at the start of input data. Default of 3 assumes
         magnification, patch start x and patch start y.
 
@@ -85,7 +85,9 @@ class TransformerModule(nn.Module):
     .. [1] https://github.com/mahmoodlab/HIPT/blob/master/2-Weakly-Supervised-Subtyping/models/model_hierarchical_mil.py#L156
     """
 
-    def __init__(self, in_features: int, out_features: int, metadata_cols: int = 3) -> None:
+    def __init__(
+        self, in_features: int, out_features: int, metadata_cols: int = 3
+    ) -> None:
         super(TransformerModule, self).__init__()
         size = [in_features, 192, 192]
 
@@ -154,13 +156,14 @@ class HIPTMIL(TransformerModule):
            Faisal Mahmood.
     """
 
-    def __init__(self, in_features: int, out_features: int, metadata_cols: int = 3):
+    def __init__(
+        self, in_features: int, out_features: int, metadata_cols: int = 3
+    ):
         super(HIPTMIL, self).__init__(
-            in_features=in_features, 
-            out_features=out_features, 
-            metadata_cols=metadata_cols
+            in_features=in_features,
+            out_features=out_features,
+            metadata_cols=metadata_cols,
         )
-       
 
     @staticmethod
     def _count_trainable(layer: nn.Module) -> int:
@@ -211,4 +214,4 @@ class HIPTMIL(TransformerModule):
         logits: torch.Tensor
             (OUT_FEATURES,)
         """
-        return super().forward(features[..., self.metadata_cols:], mask)
+        return super().forward(features[..., self.metadata_cols :], mask)

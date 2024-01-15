@@ -48,7 +48,7 @@ class DSMIL(nn.Module):
     bias: bool = True
         If True, uses bias in the MLPs.
     metadata_cols: int = 3
-        Number of metadata columns (for example, magnification, patch start 
+        Number of metadata columns (for example, magnification, patch start
         coordinates etc.) at the start of input data. Default of 3 assumes
         magnification, patch start x and patch start y.
     out_logits: str = "mean"
@@ -130,7 +130,7 @@ class DSMIL(nn.Module):
             dropout=mlp_dropout,
             activation=mlp_activation,
         )
-        
+
         self.metadata_cols = metadata_cols
 
     @staticmethod
@@ -188,7 +188,7 @@ class DSMIL(nn.Module):
         """
 
         # Discard preceding metadata columns
-        features = x[..., self.metadata_cols:]
+        features = x[..., self.metadata_cols :]
 
         # Max Pooling branch
 

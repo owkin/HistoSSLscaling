@@ -55,7 +55,7 @@ class Chowder(nn.Module):
     bias: bool = True
         Whether to add bias for layers of the tiles MLP.
     metadata_cols: int = 3
-        Number of metadata columns (for example, magnification, patch start 
+        Number of metadata columns (for example, magnification, patch start
         coordinates etc.) at the start of input data. Default of 3 assumes
         magnification, patch start x and patch start y.
 
@@ -172,7 +172,9 @@ class Chowder(nn.Module):
         logits, extreme_scores: Tuple[torch.Tensor, torch.Tensor]:
             (B, OUT_FEATURES), (B, N_TOP + N_BOTTOM, OUT_FEATURES)
         """
-        scores = self.score_model(x=features[..., self.metadata_cols:], mask=mask)
+        scores = self.score_model(
+            x=features[..., self.metadata_cols :], mask=mask
+        )
         extreme_scores = self.extreme_layer(
             x=scores, mask=mask
         )  # (B, N_TOP + N_BOTTOM, OUT_FEATURES)

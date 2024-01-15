@@ -383,7 +383,7 @@ class TransMIL(Module):
         aggregation block.
 
     metadata_cols: int = 3
-        Number of metadata columns (for example, magnification, patch start 
+        Number of metadata columns (for example, magnification, patch start
         coordinates etc.) at the start of input data. Default of 3 assumes
         magnification, patch start x and patch start y.
 
@@ -420,9 +420,9 @@ class TransMIL(Module):
         self.out_features = out_features
         self.kw_cor = kw_cor
         self.kw_agg = kw_agg
-        
+
         self.metadata_cols = metadata_cols
-        
+
         self.__build()
 
         # Weight initialization:
@@ -526,7 +526,7 @@ class TransMIL(Module):
         logits: torch.Tensor
             (B, OUT_FEATURES)
         """
-        x = features[..., self.metadata_cols:]
+        x = features[..., self.metadata_cols :]
 
         # Check input:
         _ensures_is_3d(x)

@@ -45,7 +45,7 @@ class ABMIL(nn.Module):
     bias: bool = True
         Add bias to the first MLP.
     metadata_cols: int = 3
-        Number of metadata columns (for example, magnification, patch start 
+        Number of metadata columns (for example, magnification, patch start
         coordinates etc.) at the start of input data. Default of 3 assumes
         magnification, patch start x and patch start y.
 
@@ -145,7 +145,7 @@ class ABMIL(nn.Module):
         logits, attention_weights: Tuple[torch.Tensor, torch.Tensor]
             (B, OUT_FEATURES), (B, N_TILES)
         """
-        tiles_emb = self.tiles_emb(features[..., self.metadata_cols:], mask)
+        tiles_emb = self.tiles_emb(features[..., self.metadata_cols :], mask)
         scaled_tiles_emb, _ = self.attention_layer(tiles_emb, mask)
         logits = self.mlp(scaled_tiles_emb)
 
