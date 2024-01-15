@@ -140,6 +140,19 @@ class HIPTMIL(TransformerModule):
     """Main HIPT-MIL aggregation algorithm, as implemented in [1]_.
     .. warning:: Batch size must be 1.
 
+    Parameters
+    --------
+    in_features: int
+        Features (model input) dimension.
+    out_features: int = 1
+        Prediction (model output) dimension.
+    metadata_cols: int = 3
+        Number of metadata columns (for example, magnification, patch start 
+        coordinates etc.) at the start of input data. Default of 3 assumes
+        magnification, patch start x and patch start y.
+
+    References
+    ----------
     .. [1] Scaling Vision Transformers to Gigapixel Images via Hierarchical
            Self-Supervised Learning, CVPR 2022. Richard. J. Chen, Chengkuan Chen,
            Yicong Li, Tiffany Y. Chen, Andrew D. Trister, Rahul G. Krishnan,
@@ -150,6 +163,8 @@ class HIPTMIL(TransformerModule):
         super(HIPTMIL, self).__init__(
             in_features=in_features, out_features=out_features
         )
+       
+        self.metadata_cols = metadata_cols
 
     @staticmethod
     def _count_trainable(layer: nn.Module) -> int:
@@ -200,4 +215,4 @@ class HIPTMIL(TransformerModule):
         logits: torch.Tensor
             (OUT_FEATURES,)
         """
-        return super().forward(features[..., 3:], mask)
+        return super().forward(features[..., self.metadata_cols:], mask)
