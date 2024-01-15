@@ -47,6 +47,10 @@ class DSMIL(nn.Module):
         Activation of the mlp that computes the bag score.
     bias: bool = True
         If True, uses bias in the MLPs.
+    metadata_cols: int = 3
+        Number of metadata columns (for example, magnification, patch start 
+        coordinates etc.) at the start of input data. Default of 3 assumes
+        magnification, patch start x and patch start y.
     out_logits: str = "mean"
         Score to return: "max", "bag" or "mean" (the mean of the two).
 
@@ -72,6 +76,7 @@ class DSMIL(nn.Module):
         mlp_dropout: Optional[List[float]] = None,
         mlp_activation: Optional[torch.nn.Module] = torch.nn.Sigmoid(),
         bias: bool = True,
+        metadata_cols: int = 3,
         out_logits: str = "mean",
     ):
         super(DSMIL, self).__init__()
@@ -125,6 +130,8 @@ class DSMIL(nn.Module):
             dropout=mlp_dropout,
             activation=mlp_activation,
         )
+        
+        self.metadata_cols = metadata_cols
 
     @staticmethod
     def attention_n_tiles(
@@ -180,8 +187,8 @@ class DSMIL(nn.Module):
             (B, OUT_FEATURES)
         """
 
-        # Discard coords
-        features = x[..., 3:]
+        # Discard preceding metadata columns
+        features = x[..., self.metadata_cols:]
 
         # Max Pooling branch
 
