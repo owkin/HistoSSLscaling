@@ -75,13 +75,17 @@ class TransformerModule(nn.Module):
         Features (model input) dimension.
     out_features: int = 1
         Prediction (model output) dimension.
+    metadata_cols: int = 3
+        Number of metadata columns (for example, magnification, patch start 
+        coordinates etc.) at the start of input data. Default of 3 assumes
+        magnification, patch start x and patch start y.
 
     References
     ----------
     .. [1] https://github.com/mahmoodlab/HIPT/blob/master/2-Weakly-Supervised-Subtyping/models/model_hierarchical_mil.py#L156
     """
 
-    def __init__(self, in_features: int, out_features: int) -> None:
+    def __init__(self, in_features: int, out_features: int, metadata_cols: int = 3) -> None:
         super(TransformerModule, self).__init__()
         size = [in_features, 192, 192]
 
@@ -106,6 +110,8 @@ class TransformerModule(nn.Module):
             nn.Linear(size[1], size[1]), nn.ReLU(), nn.Dropout(0.25)
         )
         self.classifier = nn.Linear(size[1], out_features)
+
+        self.metadata_cols = metadata_cols
 
     def forward(
         self, features: torch.Tensor, mask: Optional[torch.BoolTensor] = None
@@ -140,17 +146,6 @@ class HIPTMIL(TransformerModule):
     """Main HIPT-MIL aggregation algorithm, as implemented in [1]_.
     .. warning:: Batch size must be 1.
 
-    Parameters
-    --------
-    in_features: int
-        Features (model input) dimension.
-    out_features: int = 1
-        Prediction (model output) dimension.
-    metadata_cols: int = 3
-        Number of metadata columns (for example, magnification, patch start 
-        coordinates etc.) at the start of input data. Default of 3 assumes
-        magnification, patch start x and patch start y.
-
     References
     ----------
     .. [1] Scaling Vision Transformers to Gigapixel Images via Hierarchical
@@ -159,12 +154,13 @@ class HIPTMIL(TransformerModule):
            Faisal Mahmood.
     """
 
-    def __init__(self, in_features: int, out_features: int):
+    def __init__(self, in_features: int, out_features: int, metadata_cols: int = 3):
         super(HIPTMIL, self).__init__(
-            in_features=in_features, out_features=out_features
+            in_features=in_features, 
+            out_features=out_features, 
+            metadata_cols=metadata_cols
         )
        
-        self.metadata_cols = metadata_cols
 
     @staticmethod
     def _count_trainable(layer: nn.Module) -> int:
