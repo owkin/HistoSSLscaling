@@ -110,7 +110,6 @@ class ABMIL(nn.Module):
         )
 
         self.metadata_cols = metadata_cols
-
     def score_model(
         self, x: torch.Tensor, mask: Optional[torch.BoolTensor] = None
     ) -> torch.Tensor:
