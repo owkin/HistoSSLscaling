@@ -50,7 +50,7 @@ def load_camelyon16(
         "slide_path": path to the slide
         "coords_path": path to the coordinates
         "label": values of the outcome to predict
-
+    
     References
     ----------
     .. [1] https://camelyon17.grand-challenge.org/Data/ (CC0 1.0 License).
