@@ -49,8 +49,11 @@ class DSMIL(nn.Module):
         If True, uses bias in the MLPs.
     metadata_cols: int = 3
         Number of metadata columns (for example, magnification, patch start
-        coordinates etc.) at the start of input data. Default of 3 assumes
-        magnification, patch start x and patch start y.
+        coordinates etc.) at the start of input data. Default of 3 assumes 
+        that the first 3 columns of input data are, respectively:
+        1) Deep zoom level, corresponding to a given magnification
+        2) input patch starting x value 
+        3) input patch starting y value 
     out_logits: str = "mean"
         Score to return: "max", "bag" or "mean" (the mean of the two).
 
@@ -188,7 +191,7 @@ class DSMIL(nn.Module):
         """
 
         # Discard preceding metadata columns
-        features = x[..., self.metadata_cols :]
+        features = x[..., self.metadata_cols:]
 
         # Max Pooling branch
 

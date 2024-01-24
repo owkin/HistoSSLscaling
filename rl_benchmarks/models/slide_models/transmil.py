@@ -384,8 +384,11 @@ class TransMIL(Module):
 
     metadata_cols: int = 3
         Number of metadata columns (for example, magnification, patch start
-        coordinates etc.) at the start of input data. Default of 3 assumes
-        magnification, patch start x and patch start y.
+        coordinates etc.) at the start of input data. Default of 3 assumes 
+        that the first 3 columns of input data are, respectively:
+        1) Deep zoom level, corresponding to a given magnification
+        2) input patch starting x value 
+        3) input patch starting y value 
 
     References
     ----------
@@ -526,7 +529,7 @@ class TransMIL(Module):
         logits: torch.Tensor
             (B, OUT_FEATURES)
         """
-        x = features[..., self.metadata_cols :]
+        x = features[..., self.metadata_cols:]
 
         # Check input:
         _ensures_is_3d(x)

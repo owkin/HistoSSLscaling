@@ -56,8 +56,11 @@ class Chowder(nn.Module):
         Whether to add bias for layers of the tiles MLP.
     metadata_cols: int = 3
         Number of metadata columns (for example, magnification, patch start
-        coordinates etc.) at the start of input data. Default of 3 assumes
-        magnification, patch start x and patch start y.
+        coordinates etc.) at the start of input data. Default of 3 assumes 
+        that the first 3 columns of input data are, respectively:
+        1) Deep zoom level, corresponding to a given magnification
+        2) input patch starting x value 
+        3) input patch starting y value 
 
     References
     ----------
@@ -173,7 +176,7 @@ class Chowder(nn.Module):
             (B, OUT_FEATURES), (B, N_TOP + N_BOTTOM, OUT_FEATURES)
         """
         scores = self.score_model(
-            x=features[..., self.metadata_cols :], mask=mask
+            x=features[..., self.metadata_cols:], mask=mask
         )
         extreme_scores = self.extreme_layer(
             x=scores, mask=mask
