@@ -382,6 +382,14 @@ class TransMIL(Module):
         of attention heads in the self-attention layer of the deep feature
         aggregation block.
 
+    metadata_cols: int = 3
+        Number of metadata columns (for example, magnification, patch start
+        coordinates etc.) at the start of input data. Default of 3 assumes 
+        that the first 3 columns of input data are, respectively:
+        1) Deep zoom level, corresponding to a given magnification
+        2) input patch starting x value 
+        3) input patch starting y value 
+
     References
     ----------
     .. [1] Shao et al. (2021). TransMIL: Transformer based Correlated Multiple
@@ -398,6 +406,7 @@ class TransMIL(Module):
         out_features: int = 1,
         kw_cor: Optional[Dict] = None,
         kw_agg: Optional[Dict] = None,
+        metadata_cols: int = 3,
     ):
         super().__init__()
 
@@ -414,6 +423,8 @@ class TransMIL(Module):
         self.out_features = out_features
         self.kw_cor = kw_cor
         self.kw_agg = kw_agg
+
+        self.metadata_cols = metadata_cols
 
         self.__build()
 
@@ -518,7 +529,7 @@ class TransMIL(Module):
         logits: torch.Tensor
             (B, OUT_FEATURES)
         """
-        x = features[..., 3:]
+        x = features[..., self.metadata_cols:]
 
         # Check input:
         _ensures_is_3d(x)

@@ -97,6 +97,13 @@ class MeanPool(torch.nn.Module):
         Activation that is used after each layer of the MLP.
     bias: bool = True
         Whether to add bias for layers of the MLP.
+    metadata_cols: int = 3
+        Number of metadata columns (for example, magnification, patch start
+        coordinates etc.) at the start of input data. Default of 3 assumes 
+        that the first 3 columns of input data are, respectively:
+        1) Deep zoom level, corresponding to a given magnification
+        2) input patch starting x value 
+        3) input patch starting y value 
     """
 
     def __init__(
@@ -107,6 +114,7 @@ class MeanPool(torch.nn.Module):
         dropout: Optional[List[float]] = None,
         activation: Optional[torch.nn.Module] = torch.nn.Sigmoid(),
         bias: bool = True,
+        metadata_cols: int = 3,
     ):
         super(MeanPool, self).__init__()
         self.mlp = MLP(
@@ -117,6 +125,8 @@ class MeanPool(torch.nn.Module):
             activation=activation,
             bias=bias,
         )
+
+        self.metadata_cols = metadata_cols
 
     def _mean(self, x: torch.Tensor, mask: Optional[torch.BoolTensor] = None):
         if mask is not None:
@@ -144,6 +154,6 @@ class MeanPool(torch.nn.Module):
         logits: torch.Tensor
             (B, OUT_FEATURES)
         """
-        features = x[..., 3:]
+        features = x[..., self.metadata_cols:]
         mean_feats = self._mean(features, mask)
         return self.mlp(mean_feats)

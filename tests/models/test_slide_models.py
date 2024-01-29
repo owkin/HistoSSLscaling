@@ -37,6 +37,7 @@ class TestABMIL(unittest.TestCase):
             mlp_dropout=None,
             mlp_activation=None,
             bias=True,
+            metadata_cols=3,
         )
         output = model(features, mask)
         self.assertEqual(output.shape, (8, 1))
@@ -59,6 +60,7 @@ class TestChowder(unittest.TestCase):
             mlp_dropout=None,
             mlp_activation=None,
             bias=True,
+            metadata_cols=3,
         )
         output = model(features, mask)
         self.assertEqual(output.shape, (8, 1))
@@ -71,7 +73,7 @@ class TestDSMIL(unittest.TestCase):
         """Test model's output shape and correct execution."""
         features = torch.randn((8, 10, 259))
         mask = torch.zeros((8, 10, 1)).bool()
-        model = DSMIL(in_features=256, out_features=1)
+        model = DSMIL(in_features=256, out_features=1, metadata_cols=3)
         output = model(features, mask)
         self.assertEqual(output.shape, (8, 1))
 
@@ -83,7 +85,7 @@ class TestHIPTMIL(unittest.TestCase):
         """Test model's output shape and correct execution."""
         features = torch.randn((1, 10, 259))
         mask = torch.zeros((1, 10, 1)).bool()
-        model = HIPTMIL(in_features=256, out_features=1)
+        model = HIPTMIL(in_features=256, out_features=1, metadata_cols=3)
         output = model(features, mask)
         self.assertEqual(output.shape, (1, 1))
 
@@ -98,6 +100,7 @@ class TestMeanPool(unittest.TestCase):
         model = MeanPool(
             in_features=256,
             out_features=1,
+            metadata_cols=3,
         )
         output = model(features, mask)
         self.assertEqual(output.shape, (8, 1))
@@ -110,6 +113,10 @@ class TestTransMIL(unittest.TestCase):
         """Test model's output shape and correct execution."""
         features = torch.randn((8, 10, 259))
         mask = torch.zeros((8, 10, 1)).bool()
-        model = TransMIL(in_features=256, out_features=1)
+        model = TransMIL(
+            in_features=256,
+            out_features=1,
+            metadata_cols=3,
+        )
         output = model(features, mask)
         self.assertEqual(output.shape, (8, 1))
